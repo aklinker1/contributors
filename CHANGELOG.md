@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.0.3
+
+[compare changes](https://github.com/aklinker1/contributors/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Ignore scripts in dockerfile ([5f000c9](https://github.com/aklinker1/contributors/commit/5f000c9))
+
 ## v0.0.2
 
 [compare changes](https://github.com/aklinker1/contributors/compare/v0.0.1...v0.0.2)
