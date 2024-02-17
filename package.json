@@ -12,7 +12,8 @@
     "compile": "tsc --noEmit"
   },
   "dependencies": {
-    "lru-cache": "^10.2.0"
+    "lru-cache": "^10.2.0",
+    "p-map": "^7.0.1"
   },
   "devDependencies": {
     "@types/bun": "latest",

@@ -1,6 +1,7 @@
 import { github, type GithubContributor } from "./github";
 import { circles, type Circle } from "./circles";
 import { LRUCache } from "lru-cache";
+import pMap from "p-map";
 
 const baseRadius = 50;
 const gap = 10;
@@ -84,13 +85,24 @@ Bun.serve({
     bounds.width = bounds.right - bounds.left;
     bounds.height = bounds.top - bounds.bottom;
 
+    const withAvatars = await pMap(
+      placements,
+      async (c) => {
+        const res = await fetch(c.avatar_url);
+        const buffer = await res.arrayBuffer();
+        const dataUrl = `data:image/png;base64,${Buffer.from(buffer).toString("base64")}`;
+        return { ...c, avatar_url: dataUrl };
+      },
+      { concurrency: 4 },
+    );
+
     const svgDefs = placements
       .map(
         ({ id, r, x, y }) =>
           `<mask id="${id}"><circle cx="${x}" cy="${y}" r="${r}" fill="white" /></mask>`,
       )
       .join("");
-    const svgImages = placements
+    const svgImages = withAvatars
       .map(
         ({ id, avatar_url, r, x, y }) =>
           `<image xlink:href="${avatar_url}" width="${r * 2}" height="${
