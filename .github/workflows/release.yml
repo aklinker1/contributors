@@ -55,8 +55,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Update Production Deployment
-        run: curl -X POST -i ${{ secrets.UPDATE_PROD_WEBHOOK }}
+      # - name: Update Production Deployment
+      #   run: curl -X POST -i ${{ secrets.UPDATE_PROD_WEBHOOK }}
 
       - name: GitHub Release
         run: pnpx changelogen@latest gh release --token ${{ secrets.GITHUB_TOKEN }}
