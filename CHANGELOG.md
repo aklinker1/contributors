@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.4
+
+[compare changes](https://github.com/aklinker1/contributors/compare/v0.0.3...v0.0.4)
+
+### 🩹 Fixes
+
+- Use data URLs so GitHub loads the images properly ([7dd1c96](https://github.com/aklinker1/contributors/commit/7dd1c96))
+
+### 🤖 CI
+
+- Re-enable prod webhook ([0cf3d81](https://github.com/aklinker1/contributors/commit/0cf3d81))
+
 ## v0.0.3
 
 [compare changes](https://github.com/aklinker1/contributors/compare/v0.0.2...v0.0.3)
