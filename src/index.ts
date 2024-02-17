@@ -22,7 +22,7 @@ Bun.serve({
         {
           error: `Request must be in the form: ${url.origin}/<owner>/<repo>.svg`,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -54,7 +54,7 @@ Bun.serve({
 
       const next = circles.findNextCircle(
         placements.map((c) => ({ ...c, r: c.r + gap / 2 })),
-        r + gap / 2
+        r + gap / 2,
       );
       placements.push({
         ...contributor,
@@ -87,7 +87,7 @@ Bun.serve({
     const svgDefs = placements
       .map(
         ({ id, r, x, y }) =>
-          `<mask id="${id}"><circle cx="${x}" cy="${y}" r="${r}" fill="white" /></mask>`
+          `<mask id="${id}"><circle cx="${x}" cy="${y}" r="${r}" fill="white" /></mask>`,
       )
       .join("");
     const svgImages = placements
@@ -95,13 +95,13 @@ Bun.serve({
         ({ id, avatar_url, r, x, y }) =>
           `<image xlink:href="${avatar_url}" width="${r * 2}" height="${
             r * 2
-          }" x="${x - r}" y="${y - r}" mask="url(#${id})" />`
+          }" x="${x - r}" y="${y - r}" mask="url(#${id})" />`,
       )
       .join("");
     const svgOutlines = placements
       .map(
         ({ r, x, y }) =>
-          `<circle cx="${x}" cy="${y}" r="${r}" stroke="#808080" stroke-width="${outlineWidth}" fill="none" />`
+          `<circle cx="${x}" cy="${y}" r="${r}" stroke="#808080" stroke-width="${outlineWidth}" fill="none" />`,
       )
       .join("");
 

@@ -42,7 +42,7 @@ export const circles = {
   },
   findNextCircle(
     existingCircles: Array<Circle & { id: number }>,
-    r: number
+    r: number,
   ): Circle {
     // Find all possible locations
     const alreadyAdded = new Set<string>();
@@ -53,13 +53,13 @@ export const circles = {
         if (alreadyAdded.has(key)) return [];
         alreadyAdded.add(key);
         return [[c1, c2]];
-      })
+      }),
     );
     const tangentCircles = combos.flatMap(([c1, c2]) =>
-      this.findTangentCircles(c1, c2, r)
+      this.findTangentCircles(c1, c2, r),
     );
     const possibleCircles = tangentCircles.filter(
-      (c) => !existingCircles.find((ec) => circles.isIntersecting(c, ec))
+      (c) => !existingCircles.find((ec) => circles.isIntersecting(c, ec)),
     );
 
     if (possibleCircles.length === 0) {

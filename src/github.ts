@@ -2,7 +2,7 @@ export const github = {
   getContributors: async (
     owner: string,
     repo: string,
-    limit = Infinity
+    limit = Infinity,
   ): Promise<GithubContributor[]> => {
     let allRes: GithubContributor[] = [];
     let pageRes: GithubContributor[] = [];
@@ -22,7 +22,7 @@ export const github = {
 async function getContributors(
   owner: string,
   repo: string,
-  page = 1
+  page = 1,
 ): Promise<GithubContributor[]> {
   const headers = process.env.GITHUB_TOKEN
     ? { Authentication: `Bearer ${process.env.GITHUB_TOKEN}` }
