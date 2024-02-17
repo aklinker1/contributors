@@ -1,18 +1,35 @@
 {
   "name": "@aklinker1/contributors",
+  "description": "Render contributors of a GitHub repo in a unique SVG",
   "version": "0.0.0",
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --hot src/index.ts"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "dev": "bun --hot src/index.ts",
+    "postinstall": "simple-git-hooks",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "compile": "tsc --noEmit"
   },
   "dependencies": {
     "lru-cache": "^10.2.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun lint-staged"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
+  },
+  "changelog": {
+    "excludeAuthors": [
+      "aaronklinker1@gmail.com"
+    ]
   }
 }
