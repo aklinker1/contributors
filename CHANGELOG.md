@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.0.2
+
+[compare changes](https://github.com/aklinker1/contributors/compare/v0.0.1...v0.0.2)
+
+### 🤖 CI
+
+- Fix release workflow ([c1af897](https://github.com/aklinker1/contributors/commit/c1af897))
+
 ## v0.0.1
 
 ### 🚀 Enhancements
